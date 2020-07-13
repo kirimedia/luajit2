@@ -22,4 +22,4 @@ Version: ${version}
 Requires:
 Libs: -L${libdir} -l${libname}
 Libs.private: -Wl,-E -lm -ldl
-Cflags: -I${includedir}
+Cflags: -I${includedir} -DluaL_reg=luaL_Reg
