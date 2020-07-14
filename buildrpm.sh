@@ -53,7 +53,8 @@ tar czf ${RPM_TOPDIR}/SOURCES/luajit-${CURRENT_DATETIME}.tar.gz ${PACKAGE}
 
 VERSION=`cat Makefile | grep -P "^(MAJVER|MINVER|RELVER)" | sed "s/ //g"`
 eval $VERSION
-COMMIT=`git rev-parse --short HEAD`
+COMMIT_TIMESTAMP=`git log -n 1 --format='%ci' | awk '{ print $1, $2 }' | sed 's/[ :-]//g'`
+COMMIT_HASH=`git rev-parse --short HEAD`
 
 MULTILIB=lib
 ARCH=`arch`
@@ -65,5 +66,5 @@ fi
 rpmbuild -ba --clean $SPECFILE \
   --define "current_datetime ${CURRENT_DATETIME}" \
   --define "version ${MAJVER}.${MINVER}.${RELVER}" \
-  --define "release ${COMMIT}" \
+  --define "release ${COMMIT_TIMESTAMP}.${COMMIT_HASH}" \
   --define "multilib ${MULTILIB}"

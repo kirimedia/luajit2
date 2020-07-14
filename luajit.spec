@@ -9,8 +9,8 @@ BuildRoot:      %{_tmppath}/luajit-%{current_datetime}
 Summary:        LuaJIT 
 Provides:       libluajit
 Provides:       luajit
-Obsoletes:      libluajit
-Obsoletes:      luajit
+Conflicts:      libluajit
+Conflicts:      luajit
 
 %package -n luajit2-devel
 Summary:        LuaJIT devel package
@@ -18,8 +18,8 @@ Group:          System Environment/Libraries
 Requires:       luajit
 Provides:       libluajit-devel
 Provides:       luajit-devel
-Obsoletes:      libluajit-devel
-Obsoletes:      luajit-devel
+Conflicts:      libluajit-devel
+Conflicts:      luajit-devel
 
 %description
 LuaJIT library
